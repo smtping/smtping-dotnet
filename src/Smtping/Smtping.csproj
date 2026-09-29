@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Smtping</RootNamespace>
+    <AssemblyName>Smtping</AssemblyName>
+
+    <PackageId>SMTPing.EmailVerifier</PackageId>
+    <Title>SMTPing Email Verifier</Title>
+    <!-- Fallback only: the publish workflow sets the version from the release tag (v1.2.3 gives 1.2.3). -->
+    <Version>1.0.0</Version>
+    <Authors>SMTPing</Authors>
+    <Company>SMTPing</Company>
+    <Product>SMTPing</Product>
+    <Description>SMTPing Email Verifier: official .NET SDK for the SMTPing email verification API. Verify one address or a list of 100,000, flag spamtraps, complainers, spambots and disposable addresses. Automatic retries on 429 and 5xx, typed results and exceptions.</Description>
+    <PackageTags>email-verifier-dotnet;email-validator;email;email-verification;email-validation;email-verifier;spamtrap;disposable-email;deliverability;smtping</PackageTags>
+    <PackageProjectUrl>https://smtping.com/docs#sdks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/smtping/smtping-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Copyright>Copyright (c) SMTPing</Copyright>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="../../icon.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
