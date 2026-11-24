@@ -30,7 +30,7 @@ public sealed class SmtpingClient : IDisposable
 
     static readonly Regex EmailRe = new(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
     static readonly string[] SafeStatuses = { "valid", "alias" };
-    static readonly string[] AvoidStatuses = { "invalid", "spamtrap", "disposable", "blacklisted", "complainer", "spambot", "inbox_full" };
+    static readonly string[] AvoidStatuses = { "invalid", "spamtrap", "disposable", "blacklisted", "complainer", "spambot", "inbox_full", "no_reply" };
     static readonly Random Jitter = new();
 
     readonly HttpClient _http;

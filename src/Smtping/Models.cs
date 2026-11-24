@@ -70,9 +70,19 @@ public sealed class VerifyResult
     public bool? IsRoleBasedDomain { get; set; }
     public bool? IsTypos { get; set; }
 
-    /// <summary>Safe, Avoid or Judgement, derived from <see cref="Status"/>.</summary>
+    /// <summary>The band as returned by the API. Use <see cref="Band"/>.</summary>
+    [JsonPropertyName("band")]
+    public string? ServerBand { get; set; }
+
+    /// <summary>Safe, Avoid or Judgement as decided by the API, or derived from <see cref="Status"/> when the response has none.</summary>
     [JsonIgnore]
-    public Band Band => SmtpingClient.GetBand(Status);
+    public Band Band => ServerBand switch
+    {
+        "safe" => Band.Safe,
+        "avoid" => Band.Avoid,
+        "judgement" => Band.Judgement,
+        _ => SmtpingClient.GetBand(Status),
+    };
 
     /// <summary>Any other field returned by the API.</summary>
     [JsonExtensionData]
